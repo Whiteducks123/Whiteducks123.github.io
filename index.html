@@ -1,96 +1,118 @@
-<!DOCTYPE html>  <html lang="he">  
-<head>  
-<meta charset="UTF-8">  
-<title>The White Ducks</title>  
-<style>  
-body {   
-  font-family: Arial, sans-serif;   
-  text-align: center;   
-  background: linear-gradient(to bottom, #ffffff, #cce0ff);   
-  margin: 0;   
-  padding: 0;  
-}  
-h1 {   
-  color: #0b3d91;   
-  margin-top: 30px;   
-  font-size: 3em;  
-  text-shadow: 2px 2px #a0c4ff;  
-}  
-h2 {   
-  color: #0b3d91;   
-  margin-bottom: 40px;   
-  font-size: 1.5em;  
-  text-shadow: 1px 1px #a0c4ff;  
-}  
-.product-container {  
-  display: flex;  
-  justify-content: center;  
-  flex-wrap: wrap;  
-}  
-.product {   
-  margin: 20px;   
-  padding: 20px;   
-  border-radius: 15px;   
-  border: 2px solid #0b3d91;   
-  box-shadow: 3px 3px 10px rgba(0,0,0,0.2);   
-  width: 250px;   
-  background: #ffffff;  
-}  
-.product img {   
-  width: 100%;   
-  border-radius: 10px;   
-}  
-button {  
-  background: #0b3d91;  
-  color: white;  
-  padding: 10px 20px;  
-  border: none;  
-  cursor: pointer;  
-  margin-top: 10px;  
-  border-radius: 5px;  
-  font-size: 1em;  
-}  
-button:hover {  
-  transform: scale(1.1);  
-  transition: 0.2s;  
-}  
-p.limited {  
-  color: #0b3d91;  
-  font-weight: bold;  
-  margin: 5px 0;  
-}  
-</style>  
-</head>  
-<body>  <h1>THE WHITE DUCKS</h1>  
-<h2>הברווזים הלבנים מאז 2017</h2>  <div class="product-container">    <!-- חולצה 1 -->    <div class="product">  
-    <img src="shirt1.jpg" alt="חולצה 1">  
-    <p>חולצת אולטראס רשמית</p>  
-    <p class="limited">מהדורה מוגבלת – מלאי מוגבל</p>  
-    <p><strong>₪40</strong></p>  
-    <a href="https://forms.gle/qkWGvWto1B4vRh5x6" target="_blank">  
-      <button>הזמן עכשיו</button>  
-    </a>  
-  </div>    <!-- כובע -->    <div class="product">  
-    <img src="shirt2.jpg" alt="כובע במהדורה מוגבלת ">  
-<p></p>כובע</p>  
-    <p class="limited">מהדורה מוגבלת – מלאי מוגבל</p>  
-    <p><strong>₪40</strong></p>  
-    <a href="https://forms.gle/qkWGvWto1B4vRh5x6" target="_blank">  
-      <button>הזמן עכשיו</button>  
-    </a>  
-  </div>    <!-- צעיף הברווזים הלבנים  -->    <div class="product">  
-    <img src="shirt3.jpg" alt="צעיף הברווזים הלבנים">  
-    <p></p>צעיף</p>  
-    <p class="limited">מהדורה מוגבלת – מלאי מוגבל</p>  
-    <p><strong>₪40</strong></p>  
-    <a href="https://forms.gle/qkWGvWto1B4vRh5x6" target="_blank">  
-      <button>הזמן עכשיו</button>  
-    </a>  
-  </div>  </div> <h2>גלריית משחקים</h2>
+<!DOCTYPE html>
+<html lang="he">
+<head>
+<meta charset="UTF-8">
+<title>The White Ducks</title>
+<style>
+body { 
+  font-family: Arial, sans-serif; 
+  text-align: center; 
+  background: linear-gradient(to bottom, #ffffff, #cce0ff); 
+  margin: 0; 
+  padding: 0;
+}
+h1 { 
+  color: #0b3d91; 
+  margin-top: 30px; 
+  font-size: 3em;
+  text-shadow: 2px 2px #a0c4ff;
+}
+h2 { 
+  color: #0b3d91; 
+  margin-bottom: 40px; 
+  font-size: 1.5em;
+  text-shadow: 1px 1px #a0c4ff;
+}
+.product-container {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.product { 
+  margin: 20px; 
+  padding: 20px; 
+  border-radius: 15px; 
+  border: 2px solid #0b3d91; 
+  box-shadow: 3px 3px 10px rgba(0,0,0,0.2); 
+  width: 250px; 
+  background: #ffffff;
+}
+.product img { 
+  width: 100%; 
+  border-radius: 10px; 
+}
+button {
+  background: #0b3d91;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+  margin-top: 10px;
+  border-radius: 5px;
+  font-size: 1em;
+}
+button:hover {
+  transform: scale(1.1);
+  transition: 0.2s;
+}
+p.limited {
+  color: #0b3d91;
+  font-weight: bold;
+  margin: 5px 0;
+}
+
+/* גלריית סליידר */
+.slider { width: 90%; max-width: 800px; margin: auto; }
+.slide { width: 100%; display: none; border-radius: 15px; margin-bottom: 40px; }
+.active { display: block; }
+</style>
+</head>
+<body>
+
+<h1>THE WHITE DUCKS</h1>
+<h2>הברווזים הלבנים מאז 2017</h2>
+
+<div class="product-container">
+
+  <!-- חולצה -->
+  <div class="product">
+    <img src="shirt1.jpg" alt="חולצה">
+    <p>חולצת אולטראס רשמית</p>
+    <p class="limited">מהדורה מוגבלת – מלאי מוגבל</p>
+    <p><strong>₪40</strong></p>
+    <a href="https://forms.gle/qkWGvWto1B4vRh5x6" target="_blank">
+      <button>הזמן עכשיו</button>
+    </a>
+  </div>
+
+  <!-- כובע -->
+  <div class="product">
+    <img src="shirt2.jpg" alt="כובע">
+    <p>כובע</p>
+    <p class="limited">מהדורה מוגבלת – מלאי מוגבל</p>
+    <p><strong>₪40</strong></p>
+    <a href="https://forms.gle/qkWGvWto1B4vRh5x6" target="_blank">
+      <button>הזמן עכשיו</button>
+    </a>
+  </div>
+
+  <!-- צעיף -->
+  <div class="product">
+    <img src="shirt3.jpg" alt="צעיף">
+    <p>צעיף</p>
+    <p class="limited">מהדורה מוגבלת – מלאי מוגבל</p>
+    <p><strong>₪40</strong></p>
+    <a href="https://forms.gle/qkWGvWto1B4vRh5x6" target="_blank">
+      <button>הזמן עכשיו</button>
+    </a>
+  </div>
+
+</div>
+
+<h2>גלריית משחקים</h2>
 
 <div class="slider">
-  <img class="slide active" src="duck1.jpg">
-  <img class="slide" src="duck5.jpg">
+  <img class="slide active" src="duck5.jpg">
   <img class="slide" src="duck6.jpg">
   <img class="slide" src="duck7.jpg">
   <img class="slide" src="duck8.jpg">
@@ -101,12 +123,6 @@ p.limited {
   <img class="slide" src="duck13.jpg">
 </div>
 
-<style>
-.slider { width: 90%; max-width: 800px; margin: auto; }
-.slide { width: 100%; display: none; border-radius: 15px; margin-bottom: 40px; }
-.active { display: block; }
-</style>
-
 <script>
 let slides = document.querySelectorAll(".slide");
 let index = 0;
@@ -115,5 +131,7 @@ setInterval(function(){
   index = (index + 1) % slides.length;
   slides[index].classList.add("active");
 }, 3000);
-</script> </body>  
+</script>
+
+</body>
 </html>
