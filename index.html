@@ -3,9 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The White Ducks - GitHub Version</title>
+    <title>The White Ducks</title>
     <style>
-        /* עיצוב כללי - רקע כחול בהיר כמו בתמונה */
         body {
             font-family: 'Segoe UI', Arial, sans-serif;
             background: linear-gradient(180deg, #ffffff 0%, #e6f0ff 100%);
@@ -13,55 +12,24 @@
             margin: 0;
             padding: 0;
             text-align: center;
-            min-height: 100vh;
         }
 
         header { padding: 50px 20px; }
-        header h1 { font-size: 3.5rem; margin: 0; color: #1a3a8a; }
+        header h1 { font-size: 3.5rem; margin: 0; }
         header p { font-size: 1.5rem; margin-top: 10px; }
 
-        /* מיכל הסליידר */
-        .slider-container {
-            position: relative;
-            max-width: 1100px;
-            margin: 20px auto;
-            overflow: hidden; /* מסתיר את מה שיוצא מהגבולות */
-        }
-
-        .slider-wrapper {
-            display: flex;
-            overflow-x: auto; /* מאפשר דפדפת חופשית */
-            scroll-behavior: smooth;
-            gap: 20px;
-            padding: 20px;
-            scrollbar-width: none; /* מסתיר פס גלילה בדפדפנים מודרניים */
-        }
-
-        /* הסתרת פס גלילה בכרום וספארי */
-        .slider-wrapper::-webkit-scrollbar { display: none; }
-
-        /* כרטיס מוצר מעוצב */
         .product-card {
-            min-width: 300px;
+            width: 300px;
             background: white;
             border-radius: 20px;
             padding: 15px;
             box-shadow: 0 10px 30px rgba(0,0,0,0.1);
             border: 1px solid #d0dfff;
-            flex-shrink: 0;
-            transition: transform 0.3s;
+            margin: 20px auto;
         }
 
-        .product-card:hover { transform: translateY(-5px); }
+        .product-card img { width: 100%; height: 350px; object-fit: cover; border-radius: 15px; }
 
-        .product-card img {
-            width: 100%;
-            height: 350px;
-            object-fit: cover; /* שומר על פרופורציות התמונה */
-            border-radius: 15px;
-        }
-
-        /* כפתור הזמנה כחול */
         .order-btn {
             background-color: #1a3a8a;
             color: white;
@@ -76,7 +44,31 @@
             margin-top: 15px;
         }
 
-        /* חצים לניווט */
+        .gallery-title { margin-top: 80px; font-size: 2.5rem; }
+        .slider-container {
+            position: relative;
+            max-width: 1100px;
+            margin: 20px auto;
+            overflow: hidden;
+        }
+        .slider-wrapper {
+            display: flex;
+            overflow-x: auto;
+            scroll-behavior: smooth;
+            gap: 20px;
+            padding: 20px;
+            scrollbar-width: none;
+        }
+        .slider-wrapper::-webkit-scrollbar { display: none; }
+        .gallery-item {
+            min-width: 350px;
+            height: 250px;
+            border-radius: 15px;
+            overflow: hidden;
+            flex-shrink: 0;
+        }
+        .gallery-item img { width: 100%; height: 100%; object-fit: cover; }
+
         .nav-arrow {
             position: absolute;
             top: 50%;
@@ -94,99 +86,53 @@
         .arrow-right { right: 5px; }
         .arrow-left { left: 5px; }
 
-        /* גלריית משחקים */
-        .gallery-title { margin-top: 80px; font-size: 2.5rem; }
-
-        .gallery-item {
-            min-width: 350px;
-            height: 250px;
-            border-radius: 15px;
-            overflow: hidden;
-            flex-shrink: 0;
-        }
-
-        .gallery-item img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
         footer { padding: 50px; opacity: 0.6; font-size: 0.8rem; }
     </style>
 </head>
 <body>
 
-    <header>
-        <h1>THE WHITE DUCKS</h1>
-        <p>הברווזים הלבנים מאז 2017</p>
-    </header>
+<header>
+    <h1>THE WHITE DUCKS</h1>
+    <p>הברווזים הלבנים מאז 2017</p>
+</header>
 
-    <div class="slider-container">
-        <button class="nav-arrow arrow-right" onclick="scrollSlider('product-list', 320)">&#10095;</button>
-        
-        <div class="slider-wrapper" id="product-list">
-            
-            <div class="product-card">
-                <img src="images/shirt1.jpg" alt="חולצת אולטראס">
-                <h3>חולצת אולטראס רשמית</h3>
-                <p>מהדורה מוגבלת - מלאי מוגבל</p>
-                <div style="font-size: 1.5rem; font-weight: bold;">40 ₪</div>
-              https://forms.gle/qkWGvWto1B4vRh5x6 " target="_blank" class="order-btn">הזמן עכשיו</a>
-            </div>
+<!-- חולצה -->
+<div class="product-card">
+    <img src="images/shirt1.jpg" alt="חולצת אולטראס">
+    <h3>חולצת אולטראס רשמית</h3>
+    <p>מהדורה מוגבלת - מלאי מוגבל</p>
+    <div style="font-size:1.5rem;font-weight:bold;">40 ₪</div>
+    <a href="https://forms.gle/qkWGvWto1B4vRh5x6" target="_blank" class="order-btn">הזמן עכשיו</a>
+</div>
 
-            <div class="product-card">
-                <img src="images/product2.jpg" alt="מוצר 2">
-                <h3>צעיף הקבוצה</h3>
-                <p>איכות פרימיום</p>
-                <div style="font-size: 1.5rem; font-weight: bold;">30 ₪</div>
-                <a href="https://docs.google.com/forms/d/e/YOUR_ID/viewform" target="_blank" class="order-btn">הזמן עכשיו</a>
-            </div>
-
-            <div class="product-card">
-                <img src="images/product3.jpg" alt="מוצר 3">
-                <h3>כובע אולטראס</h3>
-                <p>מתאים לכל מידה</p>
-                <div style="font-size: 1.5rem; font-weight: bold;">35 ₪</div>
-                <a href="https://https://forms.gle/qkWGvWto1B4vRh5x6" target="_blank" class="order-btn">הזמן עכשיו</a>
-            </div>
-
-        </div>
-
-        <button class="nav-arrow arrow-left" onclick="scrollSlider('product-list', -320)">&#10094;</button>
+<!-- גלריית משחקים -->
+<h2 class="gallery-title">גלריית משחקים</h2>
+<div class="slider-container">
+    <button class="nav-arrow arrow-right" onclick="scrollSlider('gallery-list', 370)">&#10095;</button>
+    <div class="slider-wrapper" id="gallery-list">
+        <div class="gallery-item"><img src="images/Duke5.jpg" alt="משחק 5"></div>
+        <div class="gallery-item"><img src="images/Duke6.jpg" alt="משחק 6"></div>
+        <div class="gallery-item"><img src="images/Duke7.jpg" alt="משחק 7"></div>
+        <div class="gallery-item"><img src="images/Duke8.jpg" alt="משחק 8"></div>
+        <div class="gallery-item"><img src="images/Duke9.jpg" alt="משחק 9"></div>
+        <div class="gallery-item"><img src="images/Duke10.jpg" alt="משחק 10"></div>
+        <div class="gallery-item"><img src="images/Duke11.jpg" alt="משחק 11"></div>
+        <div class="gallery-item"><img src="images/Duke12.jpg" alt="משחק 12"></div>
+        <div class="gallery-item"><img src="images/Duke13.jpg" alt="משחק 13"></div>
     </div>
+    <button class="nav-arrow arrow-left" onclick="scrollSlider('gallery-list', -370)">&#10094;</button>
+</div>
 
-    <h2 class="gallery-title">גלריית משחקים</h2>
+<footer>
+    <p>תוכן שסופק על ידי בינה מלאכותית | כל הזכויות שמורות לברווזים הלבנים</p>
+</footer>
 
-    <div class="slider-container">
-        <button class="nav-arrow arrow-right" onclick="scrollSlider('gallery-list', 370)">&#10095;</button>
-        
-        <div class="slider-wrapper" id="gallery-list">
-            <div class="gallery-item"><img src="images/duke5.jpg" alt="משחק 1"></div>
-            <div class="gallery-item"><img src="images/duke6.jpg" alt="משחק 2"></div>
-            <div class="gallery-item"><img src="images/duke7.jpg" alt="משחק 3"></div>
-            <div class="gallery-item"><img src="images/duke8.jpg" alt="משחק 4"></div>
-        </div>
+<script>
+function scrollSlider(id, distance) {
+    const el = document.getElementById(id);
+    el.scrollBy({ left: distance, behavior: 'smooth' });
+}
+</script>
 
-        <button class="nav-arrow arrow-left" onclick="scrollSlider('gallery-list', -370)">&#10094;</button>
-    </div>
-
-    <footer>
-        <p>תוכן שסופק על ידי בינה מלאכותית | כל הזכויות שמורות לברווזים הלבנים</p>
-    </footer>
-
-    <script>
-        /**
-         * פונקציה לגלילת הסליידרים
-         * @param {string} id - ה-ID של הסליידר שרוצים להזיז
-         * @param {number} distance - המרחק בפיקסלים (חיובי לימין, שלילי לשמאל)
-         */
-        function scrollSlider(id, distance) {
-            const el = document.getElementById(id);
-            el.scrollBy({
-                left: distance,
-                behavior: 'smooth'
-            });
-        }
-    </script>
 </body>
 </html>
