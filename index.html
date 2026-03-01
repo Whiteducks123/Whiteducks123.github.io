@@ -3,164 +3,230 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The White Ducks - חנות רשמית</title>
+    <title>The White Ducks | החנות הרשמית</title>
     <style>
         :root {
             --primary-blue: #1a3a8a;
-            --light-bg: #f0f7ff;
+            --light-bg: #f4f7fa;
+            --white: #ffffff;
         }
 
         body {
             font-family: 'Segoe UI', system-ui, sans-serif;
-            background: linear-gradient(180deg, #ffffff 0%, var(--light-bg) 100%);
+            background-color: var(--light-bg);
             color: var(--primary-blue);
             margin: 0;
-            padding: 0;
+            padding-top: 70px; /* רווח לתפריט העליון */
             text-align: center;
         }
 
-        header { padding: 40px 20px; }
-        header h1 { font-size: 2.8rem; margin: 0; }
+        /* תפריט עליון דביק */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(5px);
+            box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            padding: 15px 0;
+            z-index: 1000;
+        }
+        nav a {
+            text-decoration: none;
+            color: var(--primary-blue);
+            font-weight: bold;
+            font-size: 1.1rem;
+            transition: 0.3s;
+        }
+        nav a:hover { color: #3b82f6; }
 
-        /* שורת מוצרים נגללת */
+        /* אזור הלוגו והכותרת */
+        .hero-section {
+            padding: 50px 20px;
+            background: var(--white);
+            border-bottom: 1px solid #e2e8f0;
+        }
+        .main-logo {
+            max-width: 180px;
+            height: auto;
+            margin-bottom: 20px;
+            /* אם הלוגו שלך לא עגול ורוצים להשאיר אותו ככה, אפשר להוריד את ה-border-radius */
+            filter: drop-shadow(0 5px 10px rgba(0,0,0,0.1));
+        }
+
+        header h1 { font-size: 3rem; margin: 0; letter-spacing: 1px; }
+        header p { font-size: 1.2rem; opacity: 0.7; margin-top: 10px; }
+
+        /* כותרות סקשנים */
+        .section-title {
+            margin: 50px 0 30px;
+            font-size: 2rem;
+            font-weight: 800;
+        }
+
+        /* שורת מוצרים */
         .products-wrapper {
             display: flex;
             overflow-x: auto;
             padding: 20px;
-            gap: 20px;
-            scrollbar-width: thin;
+            gap: 25px;
+            scroll-behavior: smooth;
+            scrollbar-width: none; /* הסתרת פס גלילה */
         }
+        .products-wrapper::-webkit-scrollbar { display: none; }
 
         .product-card {
-            min-width: 250px;
-            background: white;
+            min-width: 280px;
+            background: var(--white);
             border-radius: 20px;
-            padding: 15px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            padding: 20px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+            border: 1px solid #edf2f7;
             flex-shrink: 0;
+            transition: 0.3s ease;
         }
-
-        .product-card img { width: 100%; height: 180px; object-fit: cover; border-radius: 10px; background: #eee; }
+        .product-card:hover { transform: translateY(-8px); box-shadow: 0 15px 35px rgba(0,0,0,0.1); }
+        .product-card img { width: 100%; height: 230px; object-fit: cover; border-radius: 15px; }
 
         .order-btn {
             background-color: var(--primary-blue);
-            color: white;
-            padding: 10px 20px;
+            color: var(--white);
+            padding: 12px 30px;
             border-radius: 50px;
             text-decoration: none;
             display: inline-block;
-            margin-top: 10px;
+            margin-top: 20px;
             font-weight: bold;
+            transition: 0.3s;
         }
+        .order-btn:hover { background-color: #2563eb; transform: scale(1.05); }
 
         /* גלריה */
-        .gallery-section { padding: 40px 0; }
-        
         .slider-container {
             display: flex;
             align-items: center;
             justify-content: center;
-            position: relative;
-            max-width: 1000px;
+            max-width: 1200px;
             margin: 0 auto;
+            position: relative;
         }
-
         .slider-wrapper {
             display: flex;
             overflow-x: auto;
-            scroll-behavior: smooth;
             gap: 15px;
-            padding: 10px;
+            padding: 20px;
             scrollbar-width: none;
+            scroll-behavior: smooth;
         }
-
+        .slider-wrapper::-webkit-scrollbar { display: none; }
+        
         .gallery-item {
-            min-width: 280px;
-            height: 200px;
-            background: #ddd; /* צבע זמני למקרה שהתמונה לא נטענת */
-            border-radius: 15px;
-            flex-shrink: 0;
+            min-width: 320px;
+            height: 220px;
+            border-radius: 18px;
             overflow: hidden;
+            flex-shrink: 0;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.12);
         }
-
-        .gallery-item img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            display: block;
-        }
-
+        .gallery-item img { width: 100%; height: 100%; object-fit: cover; }
+        
         .nav-arrow {
             background: var(--primary-blue);
             color: white;
             border: none;
-            width: 40px;
-            height: 40px;
+            width: 45px;
+            height: 45px;
             border-radius: 50%;
             cursor: pointer;
-            margin: 0 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+            transition: 0.2s;
         }
+        .nav-arrow:hover { background: #2563eb; }
 
-        footer { padding: 20px; opacity: 0.5; }
+        footer {
+            padding: 60px 20px;
+            background: var(--white);
+            margin-top: 80px;
+            border-top: 1px solid #e2e8f0;
+            opacity: 0.8;
+        }
     </style>
 </head>
 <body>
 
-<header>
-    <h1>THE WHITE DUCKS</h1>
-    <p>הברווזים הלבנים מאז 2017</p>
-</header>
+<nav>
+    <a href="#store">החנות</a>
+    <a href="#gallery">גלריה</a>
+    <a href="https://forms.gle/qkWGvWto1B4vRh5x6" target="_blank">הזמנה</a>
+</nav>
 
-<div class="products-wrapper">
-    <div class="product-card">
-        <img src="shirt1.jpg" alt="חולצה">
-        <h3>חולצת אולטראס</h3>
-        <p>40 ₪</p>
-        <a href="https://forms.gle/qkWGvWto1B4vRh5x6" target="_blank" class="order-btn">הזמן עכשיו</a>
-    </div>
-    <div class="product-card">
-        <img src="hat.jpg" alt="כובע">
-        <h3>כובע רשמי</h3>
-        <p>40 ₪</p>
-        <a href="https://forms.gle/qkWGvWto1B4vRh5x6" target="_blank" class="order-btn">הזמן עכשיו</a>
-    </div>
-    <div class="product-card">
-        <img src="scarf.jpg" alt="צעיף">
-        <h3>צעיף אקריל</h3>
-        <p>40 ₪</p>
-        <a href="https://forms.gle/qkWGvWto1B4vRh5x6" target="_blank" class="order-btn">הזמן עכשיו</a>
-    </div>
-    <div class="product-card">
-        <img src="stickers.jpg" alt="סטיקרים">
-        <h3>חבילת סטיקרים</h3>
-        <p>10 ₪</p>
-        <a href="https://forms.gle/qkWGvWto1B4vRh5x6" target="_blank" class="order-btn">הזמן עכשיו</a>
-    </div>
-</div>
-
-<section class="gallery-section">
-    <h2>גלריית משחקים</h2>
-    <div class="slider-container">
-        <button class="nav-arrow" onclick="scrollSlider(-300)">&#10094;</button>
-        
-        <div class="slider-wrapper" id="gallery-list">
-            <div class="gallery-item"><img src="duck5.jpg" alt="תמונה 5"></div>
-            <div class="gallery-item"><img src="duck6.jpg" alt="תמונה 6"></div>
-            <div class="gallery-item"><img src="duck7.jpg" alt="תמונה 7"></div>
-            <div class="gallery-item"><img src="duck8.jpg" alt="תמונה 8"></div>
-            <div class="gallery-item"><img src="duck9.jpg" alt="תמונה 9"></div>
-            <div class="gallery-item"><img src="duck10.jpg" alt="תמונה 10"></div>
-            <div class="gallery-item"><img src="duck11.jpg" alt="תמונה 11"></div>
-            <div class="gallery-item"><img src="duck12.jpg" alt="תמונה 12"></div>
-            <div class="gallery-item"><img src="duck13.jpg" alt="תמונה 13"></div>
-        </div>
-
-        <button class="nav-arrow" onclick="scrollSlider(300)">&#10095;</button>
-    </div>
+<section class="hero-section">
+    <img src="logo.png" alt="לוגו הברווזים הלבנים" class="main-logo" onerror="this.style.display='none'">
+    <header>
+        <h1>THE WHITE DUCKS</h1>
+        <p>הברווזים הלבנים מאז 2017</p>
+    </header>
 </section>
+
+<main id="store">
+    <h2 class="section-title">מרצ'נדייז רשמי</h2>
+    <div class="products-wrapper">
+        <div class="product-card">
+            <img src="shirt1.jpg" alt="חולצה">
+            <h3>חולצת אולטראס</h3>
+            <p>40 ₪</p>
+            <a href="https://forms.gle/qkWGvWto1B4vRh5x6" target="_blank" class="order-btn">הזמן עכשיו</a>
+        </div>
+        <div class="product-card">
+            <img src="hat.jpg" alt="כובע">
+            <h3>כובע רשמי</h3>
+            <p>40 ₪</p>
+            <a href="https://forms.gle/qkWGvWto1B4vRh5x6" target="_blank" class="order-btn">הזמן עכשיו</a>
+        </div>
+        <div class="product-card">
+            <img src="scarf.jpg" alt="צעיף">
+            <h3>צעיף אקריל</h3>
+            <p>40 ₪</p>
+            <a href="https://forms.gle/qkWGvWto1B4vRh5x6" target="_blank" class="order-btn">הזמן עכשיו</a>
+        </div>
+        <div class="product-card">
+            <img src="stickers.jpg" alt="סטיקרים">
+            <h3>חבילת סטיקרים</h3>
+            <p>10 ₪</p>
+            <a href="https://forms.gle/qkWGvWto1B4vRh5x6" target="_blank" class="order-btn">הזמן עכשיו</a>
+        </div>
+    </div>
+
+    <section id="gallery">
+        <h2 class="section-title">גלריית משחקים</h2>
+        <div class="slider-container">
+            <button class="nav-arrow" onclick="scrollSlider(-350)">&#10094;</button>
+            <div class="slider-wrapper" id="gallery-list">
+                <div class="gallery-item"><img src="duck5.jpg"></div>
+                <div class="gallery-item"><img src="duck6.jpg"></div>
+                <div class="gallery-item"><img src="duck7.jpg"></div>
+                <div class="gallery-item"><img src="duck8.jpg"></div>
+                <div class="gallery-item"><img src="duck9.jpg"></div>
+                <div class="gallery-item"><img src="duck10.jpg"></div>
+                <div class="gallery-item"><img src="duck11.jpg"></div>
+                <div class="gallery-item"><img src="duck12.jpg"></div>
+                <div class="gallery-item"><img src="duck13.jpg"></div>
+            </div>
+            <button class="nav-arrow" onclick="scrollSlider(350)">&#10095;</button>
+        </div>
+    </section>
+</main>
 
 <footer>
     <p>© כל הזכויות שמורות לברווזים הלבנים</p>
+    <p style="font-size: 0.8rem; margin-top: 10px;">Since 2017</p>
 </footer>
 
 <script>
