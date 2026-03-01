@@ -8,50 +8,45 @@
         :root {
             --primary-blue: #1a3a8a;
             --light-bg: #f0f7ff;
-            --white: #ffffff;
         }
 
         body {
             font-family: 'Segoe UI', system-ui, sans-serif;
-            background: linear-gradient(180deg, var(--white) 0%, var(--light-bg) 100%);
+            background: linear-gradient(180deg, #ffffff 0%, var(--light-bg) 100%);
             color: var(--primary-blue);
             margin: 0;
             padding: 0;
             text-align: center;
             line-height: 1.6;
-            overflow-x: hidden; /* למנוע גלילה מיותרת של כל הדף */
         }
 
         header { padding: 40px 20px; }
         header h1 { font-size: 2.8rem; margin: 0; letter-spacing: 2px; }
         header p { font-size: 1.2rem; opacity: 0.8; }
 
-        /* שורת מוצרים נגללת */
+        /* שורת מוצרים בשורה אחת עם גלילה */
         .products-wrapper {
             display: flex;
-            overflow-x: auto; /* מאפשר גלילה הצידה */
+            flex-wrap: nowrap;
+            overflow-x: auto;
             padding: 20px;
             gap: 20px;
             scroll-behavior: smooth;
-            scrollbar-width: none; /* מסתיר פס גלילה ב-Firefox */
             -webkit-overflow-scrolling: touch;
-            max-width: 100%;
-            justify-content: flex-start; /* מתחיל מהצד (ימין בעברית) */
         }
-
-        .products-wrapper::-webkit-scrollbar { display: none; } /* מסתיר פס גלילה בכרום */
+        .products-wrapper::-webkit-scrollbar { height: 6px; }
+        .products-wrapper::-webkit-scrollbar-thumb { background: var(--primary-blue); border-radius: 10px; }
 
         .product-card {
-            min-width: 280px; /* רוחב קבוע לכל כרטיס כדי שלא יתכווצו */
+            min-width: 280px;
             background: white;
             border-radius: 20px;
             padding: 20px;
             box-shadow: 0 10px 25px rgba(26, 58, 138, 0.1);
             border: 1px solid #dce7ff;
+            flex-shrink: 0;
             transition: transform 0.3s ease;
-            flex-shrink: 0; /* מונע מהכרטיס להתכווץ */
         }
-
         .product-card:hover { transform: translateY(-5px); }
         .product-card img { width: 100%; height: 200px; object-fit: cover; border-radius: 15px; }
 
@@ -77,6 +72,8 @@
             position: relative;
             max-width: 1000px;
             margin: 0 auto;
+            display: flex;
+            align-items: center;
         }
 
         .slider-wrapper {
@@ -86,23 +83,26 @@
             gap: 15px;
             padding: 10px;
             scrollbar-width: none;
+            flex-grow: 1;
         }
         .slider-wrapper::-webkit-scrollbar { display: none; }
 
         .gallery-item {
-            min-width: 280px;
-            height: 200px;
+            min-width: 300px;
+            height: 220px;
             border-radius: 15px;
             overflow: hidden;
             flex-shrink: 0;
             box-shadow: 0 5px 15px rgba(0,0,0,0.1);
         }
-        .gallery-item img { width: 100%; height: 100%; object-fit: cover; }
+        .gallery-item img { 
+            width: 100%; 
+            height: 100%; 
+            object-fit: cover; 
+            display: block;
+        }
 
         .nav-arrow {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
             background: var(--primary-blue);
             color: white;
             border: none;
@@ -110,13 +110,12 @@
             height: 40px;
             border-radius: 50%;
             cursor: pointer;
-            z-index: 5;
+            z-index: 10;
             display: flex;
             align-items: center;
             justify-content: center;
+            flex-shrink: 0;
         }
-        .arrow-right { right: -10px; }
-        .arrow-left { left: -10px; }
 
         footer { padding: 40px; opacity: 0.6; font-size: 0.9rem; }
     </style>
@@ -135,21 +134,18 @@
         <p>40 ₪</p>
         <a href="https://forms.gle/qkWGvWto1B4vRh5x6" target="_blank" class="order-btn">הזמן עכשיו</a>
     </div>
-
     <div class="product-card">
         <img src="hat.jpg" alt="כובע">
-        <h3>כובע רשמי</h3>
+        <h3>כובע </h3>
         <p>40 ₪</p>
         <a href="https://forms.gle/qkWGvWto1B4vRh5x6" target="_blank" class="order-btn">הזמן עכשיו</a>
     </div>
-
     <div class="product-card">
         <img src="scarf.jpg" alt="צעיף">
-        <h3>צעיף אקריל</h3>
+        <h3>צעיף </h3>
         <p>40 ₪</p>
         <a href="https://forms.gle/qkWGvWto1B4vRh5x6" target="_blank" class="order-btn">הזמן עכשיו</a>
     </div>
-
     <div class="product-card">
         <img src="stickers.jpg" alt="סטיקרים">
         <h3>חבילת סטיקרים</h3>
@@ -161,7 +157,7 @@
 <section class="gallery-section">
     <h2 class="gallery-title">גלריית משחקים</h2>
     <div class="slider-container">
-        <button class="nav-arrow arrow-right" onclick="scrollSlider(300)">&#10095;</button>
+        <button class="nav-arrow" onclick="scrollSlider(-300)">&#10094;</button>
         
         <div class="slider-wrapper" id="gallery-list">
             <div class="gallery-item"><img src="duck5.jpg" alt="משחק 5"></div>
@@ -169,9 +165,13 @@
             <div class="gallery-item"><img src="duck7.jpg" alt="משחק 7"></div>
             <div class="gallery-item"><img src="duck8.jpg" alt="משחק 8"></div>
             <div class="gallery-item"><img src="duck9.jpg" alt="משחק 9"></div>
+            <div class="gallery-item"><img src="duck10.jpg" alt="משחק 10"></div>
+            <div class="gallery-item"><img src="duck11.jpg" alt="משחק 11"></div>
+            <div class="gallery-item"><img src="duck12.jpg" alt="משחק 12"></div>
+            <div class="gallery-item"><img src="duck13.jpg" alt="משחק 13"></div>
         </div>
 
-        <button class="nav-arrow arrow-left" onclick="scrollSlider(-300)">&#10094;</button>
+        <button class="nav-arrow" onclick="scrollSlider(300)">&#10095;</button>
     </div>
 </section>
 
