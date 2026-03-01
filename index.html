@@ -17,63 +17,52 @@
             margin: 0;
             padding: 0;
             text-align: center;
-            line-height: 1.6;
         }
 
         header { padding: 40px 20px; }
-        header h1 { font-size: 2.8rem; margin: 0; letter-spacing: 2px; }
-        header p { font-size: 1.2rem; opacity: 0.8; }
+        header h1 { font-size: 2.8rem; margin: 0; }
 
-        /* שורת מוצרים בשורה אחת עם גלילה */
+        /* שורת מוצרים נגללת */
         .products-wrapper {
             display: flex;
-            flex-wrap: nowrap;
             overflow-x: auto;
             padding: 20px;
             gap: 20px;
-            scroll-behavior: smooth;
-            -webkit-overflow-scrolling: touch;
+            scrollbar-width: thin;
         }
-        .products-wrapper::-webkit-scrollbar { height: 6px; }
-        .products-wrapper::-webkit-scrollbar-thumb { background: var(--primary-blue); border-radius: 10px; }
 
         .product-card {
-            min-width: 280px;
+            min-width: 250px;
             background: white;
             border-radius: 20px;
-            padding: 20px;
-            box-shadow: 0 10px 25px rgba(26, 58, 138, 0.1);
-            border: 1px solid #dce7ff;
+            padding: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
             flex-shrink: 0;
-            transition: transform 0.3s ease;
         }
-        .product-card:hover { transform: translateY(-5px); }
-        .product-card img { width: 100%; height: 200px; object-fit: cover; border-radius: 15px; }
+
+        .product-card img { width: 100%; height: 180px; object-fit: cover; border-radius: 10px; background: #eee; }
 
         .order-btn {
             background-color: var(--primary-blue);
             color: white;
-            border: none;
-            padding: 12px 30px;
+            padding: 10px 20px;
             border-radius: 50px;
-            cursor: pointer;
-            font-size: 1.1rem;
-            font-weight: bold;
             text-decoration: none;
             display: inline-block;
-            margin-top: 15px;
+            margin-top: 10px;
+            font-weight: bold;
         }
 
         /* גלריה */
-        .gallery-section { padding: 40px 10px; }
-        .gallery-title { font-size: 2rem; margin-bottom: 20px; }
+        .gallery-section { padding: 40px 0; }
         
         .slider-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
             position: relative;
             max-width: 1000px;
             margin: 0 auto;
-            display: flex;
-            align-items: center;
         }
 
         .slider-wrapper {
@@ -83,22 +72,21 @@
             gap: 15px;
             padding: 10px;
             scrollbar-width: none;
-            flex-grow: 1;
         }
-        .slider-wrapper::-webkit-scrollbar { display: none; }
 
         .gallery-item {
-            min-width: 300px;
-            height: 220px;
+            min-width: 280px;
+            height: 200px;
+            background: #ddd; /* צבע זמני למקרה שהתמונה לא נטענת */
             border-radius: 15px;
-            overflow: hidden;
             flex-shrink: 0;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            overflow: hidden;
         }
-        .gallery-item img { 
-            width: 100%; 
-            height: 100%; 
-            object-fit: cover; 
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
             display: block;
         }
 
@@ -110,14 +98,10 @@
             height: 40px;
             border-radius: 50%;
             cursor: pointer;
-            z-index: 10;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-shrink: 0;
+            margin: 0 10px;
         }
 
-        footer { padding: 40px; opacity: 0.6; font-size: 0.9rem; }
+        footer { padding: 20px; opacity: 0.5; }
     </style>
 </head>
 <body>
@@ -136,13 +120,13 @@
     </div>
     <div class="product-card">
         <img src="hat.jpg" alt="כובע">
-        <h3>כובע </h3>
+        <h3>כובע רשמי</h3>
         <p>40 ₪</p>
         <a href="https://forms.gle/qkWGvWto1B4vRh5x6" target="_blank" class="order-btn">הזמן עכשיו</a>
     </div>
     <div class="product-card">
         <img src="scarf.jpg" alt="צעיף">
-        <h3>צעיף </h3>
+        <h3>צעיף אקריל</h3>
         <p>40 ₪</p>
         <a href="https://forms.gle/qkWGvWto1B4vRh5x6" target="_blank" class="order-btn">הזמן עכשיו</a>
     </div>
@@ -155,20 +139,20 @@
 </div>
 
 <section class="gallery-section">
-    <h2 class="gallery-title">גלריית משחקים</h2>
+    <h2>גלריית משחקים</h2>
     <div class="slider-container">
         <button class="nav-arrow" onclick="scrollSlider(-300)">&#10094;</button>
         
         <div class="slider-wrapper" id="gallery-list">
-            <div class="gallery-item"><img src="duck5.jpg" alt="משחק 5"></div>
-            <div class="gallery-item"><img src="duck6.jpg" alt="משחק 6"></div>
-            <div class="gallery-item"><img src="duck7.jpg" alt="משחק 7"></div>
-            <div class="gallery-item"><img src="duck8.jpg" alt="משחק 8"></div>
-            <div class="gallery-item"><img src="duck9.jpg" alt="משחק 9"></div>
-            <div class="gallery-item"><img src="duck10.jpg" alt="משחק 10"></div>
-            <div class="gallery-item"><img src="duck11.jpg" alt="משחק 11"></div>
-            <div class="gallery-item"><img src="duck12.jpg" alt="משחק 12"></div>
-            <div class="gallery-item"><img src="duck13.jpg" alt="משחק 13"></div>
+            <div class="gallery-item"><img src="duck5.jpg" alt="תמונה 5"></div>
+            <div class="gallery-item"><img src="duck6.jpg" alt="תמונה 6"></div>
+            <div class="gallery-item"><img src="duck7.jpg" alt="תמונה 7"></div>
+            <div class="gallery-item"><img src="duck8.jpg" alt="תמונה 8"></div>
+            <div class="gallery-item"><img src="duck9.jpg" alt="תמונה 9"></div>
+            <div class="gallery-item"><img src="duck10.jpg" alt="תמונה 10"></div>
+            <div class="gallery-item"><img src="duck11.jpg" alt="תמונה 11"></div>
+            <div class="gallery-item"><img src="duck12.jpg" alt="תמונה 12"></div>
+            <div class="gallery-item"><img src="duck13.jpg" alt="תמונה 13"></div>
         </div>
 
         <button class="nav-arrow" onclick="scrollSlider(300)">&#10095;</button>
@@ -181,8 +165,7 @@
 
 <script>
     function scrollSlider(distance) {
-        const wrapper = document.getElementById('gallery-list');
-        wrapper.scrollBy({ left: distance, behavior: 'smooth' });
+        document.getElementById('gallery-list').scrollBy({ left: distance, behavior: 'smooth' });
     }
 </script>
 
