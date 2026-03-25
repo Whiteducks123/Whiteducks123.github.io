@@ -133,19 +133,36 @@ header p { font-size: 1.3rem; opacity: 0.9; }
     font-weight: bold;
 }
 
-/* DONATION */
-#donate {
-    margin: 60px 20px;
-    padding: 40px 20px;
-    background: rgba(255,255,255,0.1);
-    border-radius: 25px;
-    color: white;
+/* DONATE MODAL */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 2000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: url('donate-bg.jpg') no-repeat center center fixed;
+  background-size: cover;
 }
 
-#donate p {
-    font-size: 1.2rem;
-    margin: 15px 0;
-    opacity: 0.9;
+.modal-content {
+  background-color: rgba(255,255,255,0.92);
+  margin: 15% auto;
+  padding: 25px;
+  border-radius: 25px;
+  width: 90%;
+  max-width: 380px;
+  text-align: center;
+  color: var(--bg-blue);
+}
+
+.close {
+  color: #333;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+  cursor: pointer;
 }
 
 /* GALLERY */
@@ -216,9 +233,10 @@ footer {
 </section>
 
 <main id="store">
-<h2 class="section-title">מרצ'נדייז רשמי</h2>
 
+<h2 class="section-title">מרצ'נדייז רשמי</h2>
 <div class="products-wrapper">
+
     <div class="product-card">
         <img src="shirt1.jpg" alt="חולצת אולטראס">
         <h3>חולצת אולטראס</h3>
@@ -246,25 +264,24 @@ footer {
         <p>בקרוב למכירה</p>
         <div class="coming-soon">בקרוב</div>
     </div>
+
 </div>
 
+<!-- תיבת תרומה -->
 <section id="donate">
-<h2 class="section-title">תמכו בנו!</h2>
-<p>אנחנו אוספים תרומות עבור תפאורות וצביעת היציע 🎨⚪️🔵</p>
-<a href="https://forms.gle/YourDonationFormLink" target="_blank" class="order-btn">לתרומה עכשיו</a>
+  <h2 class="section-title">תמכו בנו!</h2>
+  <p>אנחנו אוספים תרומות עבור תפאורות וצביעת היציע 🎨⚪️🔵</p>
+  <button id="donateBtn" class="order-btn">לתרומה עכשיו</button>
 </section>
 
-<section id="gallery">
 <h2 class="section-title">גלריית משחקים</h2>
-
 <div class="slider-container">
-<button class="nav-arrow" onclick="scrollSlider(-350)">&#10094;</button>
-
-<div class="slider-wrapper" id="gallery-list">
-    <div class="gallery-item"><img src="duck5. jpg" alt="גלריה 5"></div>
-    <div class="gallery-item"><img src="duck6. jpg" alt="גלריה 6"></div>
-    <div class="gallery-item"><img src="duck7. jpg" alt="גלריה 7"></div>
-    <div class="gallery-item"><img src="duck8. jpg" alt="גלריה 8"></div>
+  <button class="nav-arrow" onclick="scrollSlider(-350)">&#10094;</button>
+  <div class="slider-wrapper" id="gallery-list">
+    <div class="gallery-item"><img src="duck5 .jpg" alt="גלריה 5"></div>
+    <div class="gallery-item"><img src="duck6 .jpg" alt="גלריה 6"></div>
+    <div class="gallery-item"><img src="duck7 .jpg" alt="גלריה 7"></div>
+    <div class="gallery-item"><img src="duck8 .jpg" alt="גלריה 8"></div>
     <div class="gallery-item"><img src="duck9 .jpg" alt="גלריה 9"></div>
     <div class="gallery-item"><img src="duck10 .jpg" alt="גלריה 10"></div>
     <div class="gallery-item"><img src="duck11 .jpg" alt="גלריה 11"></div>
@@ -275,11 +292,9 @@ footer {
     <div class="gallery-item"><img src="duck16 .jpg" alt="גלריה 16"></div>
     <div class="gallery-item"><img src="duck17 .jpg" alt="גלריה 17"></div>
     <div class="gallery-item"><img src="duck18 .jpg" alt="גלריה 18"></div>
+  </div>
+  <button class="nav-arrow" onclick="scrollSlider(350)">&#10095;</button>
 </div>
-
-<button class="nav-arrow" onclick="scrollSlider(350)">&#10095;</button>
-</div>
-</section>
 
 </main>
 
@@ -287,10 +302,37 @@ footer {
 <p>© כל הזכויות שמורות לברווזים הלבנים</p>
 </footer>
 
+<!-- מודאל תרומה -->
+<div id="donateModal" class="modal">
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <h2>תודה על התמיכה! 💛</h2>
+    <p>בחרו את אמצעי התשלום:</p>
+    <button onclick="openBit()" class="order-btn">ביט</button>
+    <button onclick="openPaybox()" class="order-btn">פייבוקס</button>
+  </div>
+</div>
+
 <script>
 function scrollSlider(distance) {
     document.getElementById('gallery-list')
     .scrollBy({ left: distance, behavior: 'smooth' });
+}
+
+const modal = document.getElementById("donateModal");
+const btn = document.getElementById("donateBtn");
+const span = document.querySelector(".close");
+
+btn.onclick = () => modal.style.display = "block";
+span.onclick = () => modal.style.display = "none";
+window.onclick = (e) => { if (e.target == modal) modal.style.display = "none"; }
+
+function openBit() {
+  window.open('https://www.bitpay.co.il/app/share-info?i=222821876322_19nb1gqb', '_blank');
+}
+
+function openPaybox() {
+  window.open('https://links.payboxapp.com/hmVL1HLq40b', '_blank');
 }
 </script>
 
